@@ -12,8 +12,9 @@ namespace vega\hw4\tilemaker;
  * @param int $l_width is the width of the original image
  * @param int $l_height is the height of the original image
  * @param int $stop is a boolean to determine whether to further recursively iterate
+ * @param string $name_splice is an optional string that will be added to the filename
  */
-function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = false) {
+function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = false, $u = NULL, $v = NULL) {
     
     $section_size_x = $l_width * .25;
     $section_size_y = $l_height * .25;
@@ -29,17 +30,32 @@ function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = fal
             imagecopyresampled($sect_img, $l_img,
                                 0, 0,
                                 $section_size_x * $i, $section_size_y * $j,
-                                200, 200, 200, 200);
+                                200, 200, $section_size_x, $section_size_y);
             
-
             // Write image to file
-            $img_filename = $i.$j.".jpeg";
-            if (!imagejpeg($sect_img, "./".$dest_folder."/".$img_filename, 100)) {
-                echo "Error writing ".$i.$j.".jpeg to file";
-                exit(1);
+            if ($u !== NULL && $v !== NULL) {
+                echo $u.", ".$v."\n";
+
+                $img_filename = $u.$v.$i.$j.".jpeg";
+
+                if (!imagejpeg($sect_img, "./".$dest_folder."/".$img_filename, 100)) {
+                    echo "Error writing ".$u.$v.$i.$j.".jpeg to file";
+                    exit(1);
+                }
+            }
+            else {
+                $img_filename = $i.$j.".jpeg";
+
+                if (!imagejpeg($sect_img, "./".$dest_folder."/".$img_filename, 100)) {
+                    echo "Error writing ".$i.$j.".jpeg to file";
+                    exit(1);
+                }
             }
 
             // Feed new image back into function to further divide images
+            if (!$stop) {
+                create_zoom_imgs($dest_folder, $sect_img, 200, 200, true, $i, $j);
+            }
         }
     }
     
