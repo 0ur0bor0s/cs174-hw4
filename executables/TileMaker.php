@@ -4,6 +4,13 @@
  */
 namespace vega\hw4\tilemaker;
 
+use Monolog\Handler\FirePHPHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
+//$logger = new Logger('TileMaker logger');
+//$logger->pushHandler(new StreamHandler(__DIR__.'/FileHandler.log', Logger::DEBUG));
+//$logger->pushHandler(new FirePHPHandler());
 
 /**
  * Create zoomed images
@@ -34,8 +41,6 @@ function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = fal
             
             // Write image to file
             if ($u !== NULL && $v !== NULL) {
-                echo $u.", ".$v."\n";
-
                 $img_filename = $u.$v.$i.$j.".jpeg";
 
                 if (!imagejpeg($sect_img, "./".$dest_folder."/".$img_filename, 100)) {
