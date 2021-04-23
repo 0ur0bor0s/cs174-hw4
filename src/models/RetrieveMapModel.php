@@ -42,8 +42,8 @@ class RetrieveMapModel {
     public function retrieveImages() {
         $img_arr = array();
 
-        if ($this->zoom_level == 0) { // justreturn the all.jpeg
-            $full_img = imagecreatefromjpeg('../resources/all.jpeg');
+        if ($this->zoom_level == 0) { // just return the all.jpeg
+            $full_img = imagecreatefromjpeg(getcwd().'/src/resources/all.jpeg');
             $img_arr[] = $full_img;
         }
         else if ($this->zoom_level == 1) {
@@ -58,7 +58,7 @@ class RetrieveMapModel {
                     }
                     
                     // Load image resource
-                    $image_name = "../resources/".$index.$jndex.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$index.$jndex.".jpeg";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array
@@ -78,7 +78,7 @@ class RetrieveMapModel {
                     }
                     
                     // Load image resource
-                    $image_name = "../resources/".$this->$i.$this->$j.$index.$jndex.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$this->$i.$this->$j.$index.$jndex.".jpeg";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array
