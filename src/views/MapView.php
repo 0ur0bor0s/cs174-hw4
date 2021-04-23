@@ -7,7 +7,7 @@ namespace vega\hw4\views;
 require_once('View.php');
 
 class MapView extends View {
-    private $map_arr;
+    public $map_arr;
 
     /**
      * Constructor 
@@ -15,18 +15,22 @@ class MapView extends View {
      */
     public function __construct($map_arr) {
         parent::__construct();    
-        $this->$map_arr = $map_arr;
+        $this->map_arr = $map_arr;
     }
 
     public function render() {
-        $this->header->render("");
 
-        echo var_dump($map_arr);
+        $this->header->render("");        
         
-        if (sizeof($this->$map_arr) == 1) {
-            $image = imagepng($this->$map_arr[0])
+        if (sizeof($this->map_arr) == 1) {
+
+            ob_start();
+            imagejpeg($this->map_arr[0]);
+            $raw_image_bytes = ob_get_clean();
+
+            //$image = imagepng($this->map_arr[0])
             ?>
-            <img src="<?= $image ?>"/>
+            <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
             <?php
         }
         else {

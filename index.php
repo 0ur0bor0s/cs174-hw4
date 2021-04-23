@@ -43,14 +43,3 @@ else if (isset($_REQUEST['arg1']) && isset($_REQUEST['arg2']) && isset($_REQUEST
 else if (isset($_REQUEST['arg1']) && isset($_REQUEST['arg2'])) { // 1st zoom level
 
 }
-
-
-?>
-<html>
-    <head>
-        <title>hw4</title>
-    </head>
-    <body>
-        <h1>Test to see if this works</h1>
-    </body>
-</html>

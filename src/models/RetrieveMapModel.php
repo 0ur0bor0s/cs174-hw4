@@ -21,10 +21,10 @@ class RetrieveMapModel {
             $this->zoom_level = 0;
         }
         else if ($m === null && $l === null) { // zoom level 1
-            $this->$zoom_level = 1;
+            $this->zoom_level = 1;
         }
         else { // zoom level 2
-            $this->$zoom_level = 2;
+            $this->zoom_level = 2;
         }
 
         $this->$i = $i;
@@ -43,13 +43,14 @@ class RetrieveMapModel {
         $img_arr = array();
 
         if ($this->zoom_level == 0) { // just return the all.jpeg
+            echo "<h1>Zoom level 0</h1>";
             $full_img = imagecreatefromjpeg(getcwd().'/src/resources/all.jpeg');
             $img_arr[] = $full_img;
         }
         else if ($this->zoom_level == 1) {
 
-            for ($index = $this->$i-1; $index <= $this->$i+1; ++$index) {
-                for ($jndex = $this->$j-1; $jndex <= $this->$j+1; ++$jndex) {
+            for ($index = $this->i-1; $index <= $this->i+1; ++$index) {
+                for ($jndex = $this->j-1; $jndex <= $this->j+1; ++$jndex) {
 
                     // For invalid tiles, add a null item
                     if ($index < 0 || $index > 3 || $jndex < 0 || $jndex > 3) {
@@ -68,8 +69,8 @@ class RetrieveMapModel {
         }
         else if ($this->zoom_level == 2) {
             
-            for ($index = $this->$m-1; $index <= $this->$m+1; ++$index) {
-                for ($jndex = $this->$l-1; $jndex <= $this->$l+1; ++$jndex) {
+            for ($index = $this->m-1; $index <= $this->m+1; ++$index) {
+                for ($jndex = $this->l-1; $jndex <= $this->l+1; ++$jndex) {
 
                     // For invalid tiles, add a null item
                     if ($index < 0 || $index > 3 || $jndex < 0 || $jndex > 3) {
@@ -78,7 +79,7 @@ class RetrieveMapModel {
                     }
                     
                     // Load image resource
-                    $image_name = getcwd()."/src/resources/".$this->$i.$this->$j.$index.$jndex.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$this->i.$this->j.$index.$jndex.".jpeg";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array
