@@ -49,14 +49,21 @@ class MapView extends View {
         }
         else {
             $index = 1;
-            foreach ($this->map_arr as $img) {  
-                ob_start();
-                imagejpeg($img);
-                $raw_image_bytes = ob_get_clean();
+            foreach ($this->map_arr as $img) {
+                
+                if ($img == null) {
+                    ?><a class='empty-cell'></a><?php
+                } else {
+                    ob_start();
+                    imagejpeg($img);
+                    $raw_image_bytes = ob_get_clean();
+    
+                    ?>
+                    <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
+                    <?php
+    
 
-                ?>
-                <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
-                <?php
+                }
 
                 if ($index++ == 3) {
                     ?><br><?php
