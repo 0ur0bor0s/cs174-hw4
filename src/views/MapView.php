@@ -32,9 +32,11 @@ class MapView extends View {
 
         $this->header->render("");
         
+        ?><div class="controls"><?php
         $this->zoom_element->renderElement($this->i, $this->j, $this->m, $this->l);
-        
-        ?><div class="map"><?php
+        ?>
+        </div>
+        <div class="map"><?php
         if (sizeof($this->map_arr) == 1) {
 
             ob_start();
