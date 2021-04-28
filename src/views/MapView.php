@@ -34,6 +34,7 @@ class MapView extends View {
         
         $this->zoom_element->renderElement($this->i, $this->j, $this->m, $this->l);
         
+        ?><div class="map"><?php
         if (sizeof($this->map_arr) == 1) {
 
             ob_start();
@@ -61,6 +62,7 @@ class MapView extends View {
                 }
             }
         }
+        ?></div><?php
 
 
         $this->footer->render("");

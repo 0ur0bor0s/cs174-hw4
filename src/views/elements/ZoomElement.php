@@ -18,7 +18,6 @@ class ZoomElement extends Element {
         <div class='zoom'>
         <span>Zoom: </span>
         <?php
-
         if ($i == null && $j == null && $m == null && $l == null) { // level 0
             ?>
                 <a href='index.php?c=MapController&m=show_map&arg1=1&arg2=1'><button>In</button></a>
@@ -37,8 +36,6 @@ class ZoomElement extends Element {
                 <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>'><button>Out</button></a>
             <?php
         }
-        
-
         ?></div><?php
     }
 }
