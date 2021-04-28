@@ -6,8 +6,10 @@ namespace vega\hw4\views;
 
 use vega\hw4\views\elements as ELEMS;
 
+
 require_once('View.php');
 require_once(getcwd().'/src/views/elements/ZoomElement.php');
+require_once(getcwd().'/src/views/elements/ArrowKeysElement.php');
 
 class MapView extends View {
     private $map_arr;
@@ -26,6 +28,7 @@ class MapView extends View {
         $this->m = $m;
         $this->l = $l;
         $this->zoom_element = new ELEMS\ZoomElement();
+        $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
     }
 
     public function render() {
