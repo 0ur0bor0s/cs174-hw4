@@ -9,4 +9,12 @@
     float: left;
     width: 50;
     padding: 10px;
+    border: 2px solid black;
+}
+
+.empty-cell {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    display: inline-block;
 }
