@@ -4,23 +4,35 @@
  */
 namespace vega\hw4\views;
 
+use vega\hw4\views\elements as ELEMS;
+
 require_once('View.php');
+require_once(getcwd().'/src/views/elements/ZoomElement.php');
 
 class MapView extends View {
-    public $map_arr;
+    private $map_arr;
+    private $i, $j, $m, $l;
+    private $zoom_element;
 
     /**
      * Constructor 
      * @param array $map_arr array of map resources
      */
-    public function __construct($map_arr) {
+    public function __construct($map_arr, $i=null, $j=null, $m=null, $l=null) {
         parent::__construct();    
         $this->map_arr = $map_arr;
+        $this->i = $i;
+        $this->j = $j;
+        $this->m = $m;
+        $this->l = $l;
+        $this->zoom_element = new ELEMS\ZoomElement();
     }
 
     public function render() {
 
-        $this->header->render("");        
+        $this->header->render("");
+        
+        $this->zoom_element->renderElement($this->i, $this->j, $this->m, $this->l);
         
         if (sizeof($this->map_arr) == 1) {
 
@@ -28,26 +40,24 @@ class MapView extends View {
             imagejpeg($this->map_arr[0]);
             $raw_image_bytes = ob_get_clean();
 
-            //$image = imagepng($this->map_arr[0])
             ?>
             <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
             <?php
         }
         else {
-            $i = 1;
+            $index = 1;
             foreach ($this->map_arr as $img) {  
                 ob_start();
                 imagejpeg($img);
                 $raw_image_bytes = ob_get_clean();
 
-                //$image = imagepng($this->map_arr[0])
                 ?>
                 <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
                 <?php
 
-                if ($i++ == 3) {
+                if ($index++ == 3) {
                     ?><br><?php
-                    $i = 1;
+                    $index = 1;
                 }
             }
         }

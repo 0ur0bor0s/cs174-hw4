@@ -26,8 +26,8 @@ class MapController extends Controller {
     public function show_map($i = null, $j = null, $m = null, $l = null) {
         $this->model = new MDL\RetrieveMapModel($i, $j, $m, $l);
         $map_imgs = $this->model->retrieveImages();
-
-        $this->view = new VW\MapView($map_imgs);
+        
+        $this->view = new VW\MapView($map_imgs, $i, $j, $m, $l);
         $this->view->render();
     }
 
