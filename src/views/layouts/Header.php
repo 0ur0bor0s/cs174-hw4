@@ -17,6 +17,7 @@ class Header extends Layout {
         <html>
             <head>
                 <title>Map</title>
+                <link href="src/styles/map.css" media="screen" rel="stylesheet" type="text/css" />
             </head>
             <body>
         <?php       

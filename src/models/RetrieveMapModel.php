@@ -43,7 +43,6 @@ class RetrieveMapModel {
         $img_arr = array();
 
         if ($this->zoom_level == 0) { // just return the all.jpeg
-            echo "<h1>Zoom level 0</h1>";
             $full_img = imagecreatefromjpeg(getcwd().'/src/resources/all.jpeg');
             $img_arr[] = $full_img;
         }
@@ -67,7 +66,6 @@ class RetrieveMapModel {
             }
         }
         else if ($this->zoom_level == 2) {
-            
             for ($index = $this->m-1; $index <= $this->m+1; ++$index) {
                 for ($jndex = $this->l-1; $jndex <= $this->l+1; ++$jndex) {
 

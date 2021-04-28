@@ -7,19 +7,13 @@ namespace vega\hw4\views\elements;
 
 abstract class Element {
     /**
-     * Data
-     */
-    protected $dir;
-
-    /**
      * Constructor
      */
-    public function __contruct($dir) {
-        $this->$dir = $dir;
+    public function __contruct() {
     }
 
     /**
      * Function to render element
      */
-    abstract public function renderElement($array);
+    abstract public function renderElement($i, $j, $m, $l);
 }
