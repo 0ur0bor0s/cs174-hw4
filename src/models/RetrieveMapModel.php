@@ -78,7 +78,7 @@ class RetrieveMapModel {
                     }
                     
                     // Load image resource
-                    $image_name = getcwd()."/src/resources/".$this->i.$this->j.$index.$jndex.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$this->j.$this->i.$jndex.$index.".jpeg";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array
