@@ -34,7 +34,22 @@ class MapView extends View {
             <?php
         }
         else {
+            $i = 1;
+            foreach ($this->map_arr as $img) {  
+                ob_start();
+                imagejpeg($img);
+                $raw_image_bytes = ob_get_clean();
 
+                //$image = imagepng($this->map_arr[0])
+                ?>
+                <img src='data:image/jpeg;base64,<?= base64_encode($raw_image_bytes) ?>'/>
+                <?php
+
+                if ($i++ == 3) {
+                    ?><br><?php
+                    $i = 1;
+                }
+            }
         }
 
 

@@ -27,10 +27,10 @@ class RetrieveMapModel {
             $this->zoom_level = 2;
         }
 
-        $this->$i = $i;
-        $this->$j = $j;
-        $this->$m = $m;
-        $this->$l = $l;
+        $this->i = $i;
+        $this->j = $j;
+        $this->m = $m;
+        $this->l = $l;
     }
 
 
@@ -48,7 +48,6 @@ class RetrieveMapModel {
             $img_arr[] = $full_img;
         }
         else if ($this->zoom_level == 1) {
-
             for ($index = $this->i-1; $index <= $this->i+1; ++$index) {
                 for ($jndex = $this->j-1; $jndex <= $this->j+1; ++$jndex) {
 
@@ -59,7 +58,7 @@ class RetrieveMapModel {
                     }
                     
                     // Load image resource
-                    $image_name = getcwd()."/src/resources/".$index.$jndex.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$jndex.$index.".jpeg";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array

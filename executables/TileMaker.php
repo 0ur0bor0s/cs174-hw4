@@ -19,7 +19,6 @@ use Monolog\Logger;
  * @param int $l_width is the width of the original image
  * @param int $l_height is the height of the original image
  * @param int $stop is a boolean to determine whether to further recursively iterate
- * @param string $name_splice is an optional string that will be added to the filename
  */
 function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = false, $u = NULL, $v = NULL) {
     
