@@ -27,14 +27,14 @@ class ZoomElement extends Element {
         } 
         else if ($m == null && $l == null) { // level 1
             ?>
-                <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>arg3=1&arg4=1'><button>In</button></a>
+                <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>&arg3=1&arg4=1'><button>In</button></a>
                 <a href='index.php?c=MapController&m=show_map'><button>Out</button></a>
             <?php
         } 
         else { // level 2
             ?>
                 <button disabled>In</button>
-                <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>arg3=1&arg4=1'><button>Out</button></a>
+                <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>'><button>Out</button></a>
             <?php
         }
         

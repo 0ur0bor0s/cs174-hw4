@@ -66,7 +66,7 @@ class RetrieveMapModel {
             }
         }
         else if ($this->zoom_level == 2) {
-            
+            echo "<h1>level 2</h1>";
             for ($index = $this->m-1; $index <= $this->m+1; ++$index) {
                 for ($jndex = $this->l-1; $jndex <= $this->l+1; ++$jndex) {
 
