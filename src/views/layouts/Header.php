@@ -34,6 +34,7 @@ class Header extends Layout
                 .right {
                     transform: rotate(-45deg);
                     -webkit-transform: rotate(-45deg);
+                    margin-left: 8px;
                 }
 
                 .left {
@@ -44,11 +45,15 @@ class Header extends Layout
                 .up {
                     transform: rotate(-135deg);
                     -webkit-transform: rotate(-135deg);
+                    padding-left:2px;
+                    margin-left: 10px;
+                   
                 }
 
                 .down {
                     transform: rotate(45deg);
                     -webkit-transform: rotate(45deg);
+                    margin-left: 10px;
                 }
             </style>
         </head>

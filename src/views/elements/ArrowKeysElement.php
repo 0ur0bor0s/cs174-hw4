@@ -15,7 +15,7 @@ abstract class ArrowKeys extends Element
     /**
      * Constructor for the arrow key class
      */
-    public function __construct($dir)
+    public function __construct()
     {
     }
 
@@ -25,15 +25,42 @@ abstract class ArrowKeys extends Element
     public function renderElement($i, $j, $m, $l)
     {
 
-    ?>
-        <form method = "post">
-            <i class="arrow up"></i></p>
-            <i class="arrow left"></i> <i class="arrow right"></i></br>
-            <i class="arrow down"></i></p>
-        </form> 
+?>
+        <div class="arrow-keys">
+            <?php
+
+            ?>
+            <button>
+                <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"></i>
+            </button>
+            </a>
+
+            </br>
 
         
-    <?php
+            <button><i class="arrow left"></button></i>
+            <button><i class="arrow right"></i></button></br>
+            <button><i class="arrow down"></i></button>
+        </div>
 
+
+
+    <?php
+    }
+
+
+    private function zoom_level_1_arrowkeys($i, $j, $m, $l )
+    {
+    ?> 
+        <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>&arg3<?= $l ?>$arg4<?= $m ?>'>
+
+        <?php
+    }
+    private function zoom_level_2_arrowkeys($m, $l)
+    {
+        ?>
+            <a href='index.php?c=MapController&m=show_map&arg1=<?= $m ?>&arg2=<?= $l ?>'>
+
+        <?php
     }
 }
