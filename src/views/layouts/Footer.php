@@ -10,6 +10,7 @@ class Footer extends Layout {
 
     function render($data) {
         ?>
+            <script type="text/javascript" src="src/scripts/main.js" ></script>
             </body>
             </html>
         <?php
