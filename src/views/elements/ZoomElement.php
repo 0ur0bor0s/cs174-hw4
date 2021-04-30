@@ -1,6 +1,6 @@
 <?php
 /**
- * @author vega
+ * @author Ben Foley 
  */
 namespace vega\hw4\views\elements;
 

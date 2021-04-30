@@ -1,6 +1,6 @@
 <?php
 /**
- * @author vega
+ * @author Earl Padron and Ben Foley
  */
 namespace vega\hw4\views\elements;
 
@@ -14,27 +14,15 @@ class ArrowElement extends Element {
     }
 
     public function renderElement($i, $j, $m, $l) {
-        ?>
-        <!--
-        <div class='arrow'>
-            &ensp;&ensp;&ensp;&ensp;&ensp;
-            <button><pre>^</pre></button><br><br>
-            <button><pre><</pre></button>&nbsp;&nbsp;
-            <button><pre>></pre></button><br><br>
-            &ensp;&ensp;&ensp;&ensp;&ensp;
-            <button><pre>v</pre></button>
-        </div>
-        -->
-        <?php
 
         if ($i == null && $j == null && $m == null && $l == null) { // level 0
             ?>
             <div class='arrow'>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                &ensp;&ensp;
                 <button disabled><pre>^</pre></button><br><br>
                 <button disabled><pre><</pre></button>&nbsp;&nbsp;&nbsp;
                 <button disabled><pre>></pre></button><br><br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                &ensp;&ensp;
                 <button disabled><pre>v</pre></button>
             </div>           
             <?php
@@ -46,12 +34,12 @@ class ArrowElement extends Element {
                 // Up Arrow
                 if ($i == 0) { 
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <button disabled><pre>^</pre></button><br><br>
                     <?php
                 } else {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i-1 ?>&arg2=<?= $j ?>'><button><pre>^</pre></button></a><br><br>
                     <?php
                 }
@@ -83,12 +71,12 @@ class ArrowElement extends Element {
                 // Down Arrow
                 if ($i == 3) {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;    
+                    &ensp;&ensp;   
                     <button disabled><pre>v</pre></button>
                     <?php
                 } else {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i+1 ?>&arg2=<?= $j ?>'><button><pre>v</pre></button></a>
                     <?php
                 }
@@ -101,18 +89,18 @@ class ArrowElement extends Element {
             // Up Arrow
             if ($i == 0 && $m == 0) { 
                 ?>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                &ensp;&ensp;
                 <button disabled><pre>^</pre></button><br><br>
                 <?php
             } else {
                 if ($m == 0) { // go up level
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i-1 ?>&arg2=<?= $j ?>&arg3=3&arg4=<?= $l ?>'><button><pre>^</pre></button></a><br><br>
                     <?php
                 } else {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>&arg3=<?= $m-1 ?>&arg4=<?= $l ?>'><button><pre>^</pre></button></a><br><br>
                     <?php
                 }
@@ -158,25 +146,23 @@ class ArrowElement extends Element {
             // Down Arrow
             if ($i == 3 && $m == 3) {
                 ?>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;    
+                &ensp;&ensp;    
                 <button disabled><pre>v</pre></button>
                 <?php
             } else {
 
                 if ($m == 3) {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i+1 ?>&arg2=<?= $j ?>&arg3=0&arg4=<?= $l ?>'><button><pre>v</pre></button></a>
                     <?php
                 } else {
                     ?>
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>&arg3=<?= $m+1 ?>&arg4=<?= $l ?>'><button><pre>v</pre></button></a>
                     <?php                   
                 }
             }
-        
-
             ?></div><?php
         }
     }

@@ -14,7 +14,6 @@ if(!isset($_REQUEST['c'])) {
     header("refresh: 0");
 }
 
-
 switch ($_REQUEST['c']) {
 case "MapController":
     $method = $_REQUEST['m'];
@@ -23,7 +22,11 @@ case "MapController":
     
     // set show_map with args
     if (isset($_REQUEST['arg3']) && isset($_REQUEST['arg4'])) // level 2
-        $object->$method($_REQUEST['arg1'], $_REQUEST['arg2'], $_REQUEST['arg3'], $_REQUEST['arg4']);
+        if ($_REQUEST['arg3'] == '' && $_REQUEST['arg4'] == '') {
+            $object->$method($_REQUEST['arg1'], $_REQUEST['arg2']);
+        } else {
+            $object->$method($_REQUEST['arg1'], $_REQUEST['arg2'], $_REQUEST['arg3'], $_REQUEST['arg4']);
+        }
     else if (isset($_REQUEST['arg1']) && isset($_REQUEST['arg2'])) // level 1
         $object->$method($_REQUEST['arg1'], $_REQUEST['arg2']);
     else // level 0
