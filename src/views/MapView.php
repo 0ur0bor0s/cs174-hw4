@@ -28,7 +28,7 @@ class MapView extends View {
         $this->m = $m;
         $this->l = $l;
         $this->zoom_element = new ELEMS\ZoomElement();
-        $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
+       // $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
     }
 
     public function render() {
