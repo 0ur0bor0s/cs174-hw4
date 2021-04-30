@@ -15,6 +15,7 @@ class MapView extends View {
     private $map_arr;
     private $i, $j, $m, $l;
     private $zoom_element;
+    private $arrow_keys_element;
 
     /**
      * Constructor 
@@ -28,7 +29,11 @@ class MapView extends View {
         $this->m = $m;
         $this->l = $l;
         $this->zoom_element = new ELEMS\ZoomElement();
+<<<<<<< Updated upstream
        // $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
+=======
+        $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
+>>>>>>> Stashed changes
     }
 
     public function render() {
@@ -37,8 +42,10 @@ class MapView extends View {
         
         ?><div class="controls"><?php
         $this->zoom_element->renderElement($this->i, $this->j, $this->m, $this->l);
+        $this->arrow_keys_element->renderElement($this->i, $this->j, $this->m, $this->l);
         ?>
         </div>
+        
         <div class="map"><?php
         if (sizeof($this->map_arr) == 1) {
 
