@@ -8,11 +8,12 @@ use vega\hw4\views\elements as ELEMS;
 
 require_once('View.php');
 require_once(getcwd().'/src/views/elements/ZoomElement.php');
-
+require_once(getcwd().'/src/views/elements/CoordinatesElement.php');
 class MapView extends View {
     private $map_arr;
     private $i, $j, $m, $l;
     private $zoom_element;
+    private $coordinates_element;
 
     /**
      * Constructor 
@@ -26,6 +27,7 @@ class MapView extends View {
         $this->m = $m;
         $this->l = $l;
         $this->zoom_element = new ELEMS\ZoomElement();
+        $this->coordinates_element = new ELEMS\CoordinatesElement();
     }
 
     public function render() {
@@ -33,6 +35,8 @@ class MapView extends View {
         $this->header->render("");
         
         ?><div class="controls"><?php
+        $this->coordinates_element->renderElement($this->i, $this->j, $this->m, $this->l);
+        ?> <br></br><?php
         $this->zoom_element->renderElement($this->i, $this->j, $this->m, $this->l);
         ?>
         </div>
