@@ -32,6 +32,7 @@ case "MapController":
     break;
 }
 
+/*
 if (!isset($_REQUEST['arg1'])) {
     
 }
@@ -42,4 +43,4 @@ else if (isset($_REQUEST['arg1']) && isset($_REQUEST['arg2']) && isset($_REQUEST
 }
 else if (isset($_REQUEST['arg1']) && isset($_REQUEST['arg2'])) { // 1st zoom level
 
-}
+}*/

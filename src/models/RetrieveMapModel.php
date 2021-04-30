@@ -70,13 +70,40 @@ class RetrieveMapModel {
                 for ($jndex = $this->l-1; $jndex <= $this->l+1; ++$jndex) {
 
                     // For invalid tiles, add a null item
-                    if ($index < 0 || $index > 3 || $jndex < 0 || $jndex > 3) {
+                    if (($index < 0 && $this->i == 0) || ($index > 3 && $this->i == 3) || ($jndex < 0 && $this->j == 0) || ($jndex > 3 && $this->j == 3)) {
                         $img_arr[] = null;
                         continue;
                     }
+
+                    // Modulo 4 is needed calculate tiles outside of i and j level
+                    $m_mod = (4 + ($jndex % 4)) % 4;
+                    $l_mod = (4 + ($index % 4)) % 4;
+                    
+                    $new_i = $this->j; 
+                    $new_j = $this->i; 
+                    $new_m = $jndex;
+                    $new_l = $index;
+
+                    if ($jndex < 0) { // up
+                        $new_m = $m_mod;
+                        $new_i--;
+                    } else if ($jndex > 3) { // down
+                        $new_m = $m_mod;
+                        $new_i++;
+                    }
+
+                    if ($index < 0) { // left
+                        $new_l = $l_mod;
+                        $new_j--;                       
+                    } else if ($index > 3) { // right
+                        $new_l = $l_mod;
+                        $new_j++;
+                    }
+
                     
                     // Load image resource
-                    $image_name = getcwd()."/src/resources/".$this->j.$this->i.$jndex.$index.".jpeg";
+                    $image_name = getcwd()."/src/resources/".$new_i.$new_j.$new_m.$new_l.".jpeg";
+                    //echo $new_i.$new_j.$new_m.$new_l."\n";
                     $img_res = imagecreatefromjpeg($image_name);
                     
                     // Add image to array
