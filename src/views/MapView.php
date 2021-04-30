@@ -29,11 +29,7 @@ class MapView extends View {
         $this->m = $m;
         $this->l = $l;
         $this->zoom_element = new ELEMS\ZoomElement();
-<<<<<<< Updated upstream
-       // $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
-=======
         $this->arrow_keys_element = new ELEMS\ArrowKeysElement();
->>>>>>> Stashed changes
     }
 
     public function render() {

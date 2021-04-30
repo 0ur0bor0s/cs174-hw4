@@ -8,53 +8,18 @@ namespace vega\hw4\views\elements;
 
 require_once('Element.php');
 
-<<<<<<< Updated upstream
-abstract class ArrowKeys extends Element{
-=======
 abstract class ArrowKeysElement extends Element
 {
->>>>>>> Stashed changes
 
 
     /**
      * Constructor for the arrow key class
      */
-<<<<<<< Updated upstream
-    public function __construct()
-    {
-    }
-=======
     public function __construct(){}
->>>>>>> Stashed changes
 
     /**
      * Renders the arrow keys on the web browser
      */
-<<<<<<< Updated upstream
-    public function renderElement($i, $j, $m, $l){
-
-       ?>
-        <div class="arrow-keys">
-            <?php
-
-            //zoom level 2
-            if ($m == null && $j == null) {
-            ?>
-                <button>
-                    <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"></i>
-                </button>
-                </a>
-                </br>
-
-
-                <button>
-                <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"><i class="arrow left"></button></i>
-                <button>
-                <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"><i class="arrow right"></i></button></a>
-                </br>
-                <button>
-                <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"><i class="arrow down"></i></button></a>
-=======
     public function renderElement($i, $j, $m, $l)
     {
         /* Arg1 = i
@@ -116,22 +81,11 @@ abstract class ArrowKeysElement extends Element
                     ?>
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $down ?>&arg2=<?= $l ?>'><i class="arrow down"></i>
                 </button></a>
->>>>>>> Stashed changes
             <?php
 
             } else { //zoom level 2
             ?>
                 <button>
-<<<<<<< Updated upstream
-                    <?php $this->zoom_level_2_arrowkeys($m, $l); ?><i class="arrow up"></i>
-                </button>
-                </a>
-                </br>
-
-                <button><i class="arrow left"></button></i>
-                <button><i class="arrow right"></i></button></br>
-                <button><i class="arrow down"></i></button>
-=======
                     <?php
                     $up = $m++;
                     ?>
@@ -159,30 +113,9 @@ abstract class ArrowKeysElement extends Element
                     ?>
                     <a href='index.php?c=MapController&m=show_map&arg1=<?= $i?>&arg2=<?= $j?>?>&arg3=<?= $down ?>&arg4=<?= $i ?>'><i class="arrow down"></i>
                 </button></a>
->>>>>>> Stashed changes
             <?php
             }
             ?>
         </div><?php
-<<<<<<< Updated upstream
-    }
-
-
-    private function zoom_level_1_arrowkeys($i, $j, $m, $l){
-        ?>
-        <a href='index.php?c=MapController&m=show_map&arg1=<?= $i ?>&arg2=<?= $j ?>&arg3<?= $l ?>$arg4<?= $m ?>'>
-
-        <?php
-     }
-    private function zoom_level_2_arrowkeys($m, $l) {
-        ?>
-        <a href='index.php?c=MapController&m=show_map&arg1=<?= $m ?>&arg2=<?= $l ?>'>
-
-       <?php
-    }
-        
-}
-=======
             }
         }
->>>>>>> Stashed changes
