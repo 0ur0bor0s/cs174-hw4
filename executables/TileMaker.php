@@ -4,13 +4,12 @@
  */
 namespace vega\hw4\tilemaker;
 
+require_once('../vendor/autoload.php');
+
 use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-//$logger = new Logger('TileMaker logger');
-//$logger->pushHandler(new StreamHandler(__DIR__.'/FileHandler.log', Logger::DEBUG));
-//$logger->pushHandler(new FirePHPHandler());
 
 /**
  * Create zoomed images
@@ -20,8 +19,8 @@ use Monolog\Logger;
  * @param int $l_height is the height of the original image
  * @param int $stop is a boolean to determine whether to further recursively iterate
  */
-function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = false, $u = NULL, $v = NULL) {
-    
+function create_zoom_imgs($logger, $dest_folder, $l_img, $l_width, $l_height, $stop = false, $u = NULL, $v = NULL) {
+
     $section_size_x = $l_width * .25;
     $section_size_y = $l_height * .25;
    
@@ -46,6 +45,8 @@ function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = fal
                     echo "Error writing ".$u.$v.$i.$j.".jpeg to file";
                     exit(1);
                 }
+
+                $logger->info('File written: '.$u.$v.$i.$j.'.jpeg');
             }
             else {
                 $img_filename = $i.$j.".jpeg";
@@ -54,11 +55,13 @@ function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = fal
                     echo "Error writing ".$i.$j.".jpeg to file";
                     exit(1);
                 }
+
+                $logger->info('File written: '.$i.$j.'.jpeg');
             }
 
             // Feed new image back into function to further divide images
             if (!$stop) {
-                create_zoom_imgs($dest_folder, $sect_img, 200, 200, true, $i, $j);
+                create_zoom_imgs($logger, $dest_folder, $sect_img, 200, 200, true, $i, $j);
             }
         }
     }
@@ -72,6 +75,11 @@ function create_zoom_imgs($dest_folder, $l_img, $l_width, $l_height, $stop = fal
  * @param array $argv command line arguments array
  */
 function main($argv) {
+
+    // Monolog stuff
+    $logger = new Logger('TileMaker logger');
+    $logger->pushHandler(new StreamHandler(__DIR__.'/TileMaker.log', Logger::DEBUG));
+    $logger->pushHandler(new FirePHPHandler());
 
     // Debugging dumps
     //var_dump(gd_info());
@@ -104,7 +112,7 @@ function main($argv) {
 
     // Resize image if not 800 x 800
     if ($i_width != 800 || $i_height != 800) {
-        echo "Resizeing image in all.jpeg";
+        //echo "Resizeing image in all.jpeg";
         imagecopyresampled($all_img, 
                             $origin_img, 
                             0, 0,
@@ -114,7 +122,7 @@ function main($argv) {
     }
     // No resize needed. Just copy
     else {
-        echo "No resizing needed\nCopying to all.jpeg";
+        //echo "No resizing needed\n";
         imagecopy($all_img, 
                   $origin_img, 
                   0, 0,
@@ -123,8 +131,10 @@ function main($argv) {
     }
 
     // output $all_img to file
-    mkdir($dest_folder);
-    if (!imagejpeg($all_img, "./".$dest_folder."/all.jpeg", 100)) {
+    if (!is_dir($dest_folder)) {
+        mkdir($dest_folder, 777, true);
+    }
+    if (!imagejpeg($all_img, __DIR__."/".$dest_folder."/all.jpeg", 100)) {
         echo "Error writing all.jpeg to file";
         exit(1);
     }
@@ -134,7 +144,7 @@ function main($argv) {
     //
 
     // create the 16 images for first zoom
-    create_zoom_imgs($dest_folder, $origin_img, $i_width, $i_height);
+    create_zoom_imgs($logger, $dest_folder, $origin_img, $i_width, $i_height);
         
 }
 
